@@ -5,6 +5,8 @@ abstract class Planta(var altura: Double, val anioSemilla: Int) {
     open fun esFuerte(): Boolean { return false }
 
     open fun horasDeSolToleradas(): Int { return 7 }
+
+    abstract fun esParcelaIdeal(parcela: Parcela): Boolean
 }
 
 abstract class Menta(altura: Double, anioSemilla: Int): Planta(altura, anioSemilla) {
@@ -16,7 +18,7 @@ abstract class Menta(altura: Double, anioSemilla: Int): Planta(altura, anioSemil
         return altura > 0.4
     }
 
-    fun esParcelaIdeal(parcela: Parcelas): Boolean { return parcela.superficie() > 6 }
+    override fun esParcelaIdeal(parcela: Parcela): Boolean { return parcela.superficie() > 6 }
 }
 
 abstract class Soja(altura: Double, anioSemilla: Int): Planta(altura, anioSemilla) {
@@ -32,7 +34,7 @@ abstract class Soja(altura: Double, anioSemilla: Int): Planta(altura, anioSemill
         return if (altura < 0.5){6} else if (altura < 1.0){8} else {12}
     }
 
-    open fun esParcelaIdeal(parcela: Parcelas): Boolean { return parcela.horasDeSolDiarias == this.horasDeSolToleradas() }
+    override fun esParcelaIdeal(parcela: Parcela): Boolean { return parcela.horasDeSolDiarias == this.horasDeSolToleradas() }
 }
 
 class Quinoa(altura: Double, anioSemilla: Int, var espacio: Double): Planta(altura, anioSemilla) {
@@ -46,14 +48,14 @@ class Quinoa(altura: Double, anioSemilla: Int, var espacio: Double): Planta(altu
         return anioSemilla in 2001..2008
     }
 
-    fun esParcelaIdeal(parcela: Parcelas): Boolean { return parcela.plantas.all { it.altura < 1.5 } }
+    override fun esParcelaIdeal(parcela: Parcela): Boolean { return parcela.plantas.all { it.altura < 1.5 } }
 }
 
 // 2)
 class SojaTransgenica(altura: Double, anioSemilla: Int): Soja(altura, anioSemilla) {
     override fun daSemillas(): Boolean { return false }
 
-    override fun esParcelaIdeal(parcela: Parcelas): Boolean { return parcela.cantidadMaxima() == 1 }
+    override fun esParcelaIdeal(parcela: Parcela): Boolean { return parcela.cantidadMaxima() == 1 }
 }
 
 class Peperina(altura: Double, anioSemilla: Int): Menta(altura, anioSemilla){
