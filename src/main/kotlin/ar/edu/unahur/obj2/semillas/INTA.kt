@@ -8,10 +8,12 @@ object INTA {
     }
 
     fun promedioDePlantas(): Int {
-        return parcelas.sumBy { it.plantas.size } / parcelas.size
+        return (parcelas.sumBy{ it.plantas.size }) / parcelas.size
     }
 
     fun parcelaMasAutosustentable(): Parcela? {
-        return parcelas.filter{it.plantas.size >= 4}.maxByOrNull{ unaParcela -> unaParcela.plantas.count{ unaParcela.seAsociaBien(it) } / unaParcela.plantas.size }
+        return parcelas.filter{it.plantas.size >= 4}.maxByOrNull{
+                unaParcela -> unaParcela.plantas.count{ unaParcela.seAsociaBien(it) } / unaParcela.plantas.size
+        }
     }
 }

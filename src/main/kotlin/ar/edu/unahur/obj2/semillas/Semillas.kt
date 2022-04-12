@@ -9,7 +9,7 @@ abstract class Planta(var altura: Double, val anioSemilla: Int) {
     abstract fun esParcelaIdeal(parcela: Parcela): Boolean
 }
 
-abstract class Menta(altura: Double, anioSemilla: Int): Planta(altura, anioSemilla) {
+open class Menta(altura: Double, anioSemilla: Int): Planta(altura, anioSemilla) {
     open fun espacio(): Double {
         return altura + 1.0
     }
@@ -21,7 +21,7 @@ abstract class Menta(altura: Double, anioSemilla: Int): Planta(altura, anioSemil
     override fun esParcelaIdeal(parcela: Parcela): Boolean { return parcela.superficie() > 6 }
 }
 
-abstract class Soja(altura: Double, anioSemilla: Int): Planta(altura, anioSemilla) {
+open class Soja(altura: Double, anioSemilla: Int): Planta(altura, anioSemilla) {
     fun espacio(): Double {
         return altura / 2
     }
