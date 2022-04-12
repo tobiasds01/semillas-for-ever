@@ -11,6 +11,8 @@ class SemillasTest : DescribeSpec ({
     val menta = Menta(1.0, 2021)
     val mentita = Menta(0.3, 2021)
     val soja = Soja(0.6, 2009)
+    val quinoa = Quinoa(0.2, 2010, 1.0)
+    val quinoaGrande = Quinoa(0.9, 2006, 0.2)
 
     val sojaAlta = Soja(1.5, 2010)
     val plantasParcela1 = mutableListOf<Planta>(sojaAlta, sojaAlta, sojaAlta, sojaAlta)
@@ -29,11 +31,15 @@ class SemillasTest : DescribeSpec ({
             menta.daSemillas().shouldBeTrue()
             mentita.daSemillas().shouldBeFalse()
             soja.daSemillas().shouldBeFalse()
+            quinoa.daSemillas().shouldBeFalse()
+            quinoaGrande.daSemillas().shouldBeTrue()
         }
 
         it("es fuerte") {
             menta.esFuerte().shouldBeFalse()
             soja.esFuerte().shouldBeFalse()
+            quinoa.esFuerte().shouldBeFalse()
+            quinoaGrande.esFuerte().shouldBeTrue()
         }
 
         it("espacio") {

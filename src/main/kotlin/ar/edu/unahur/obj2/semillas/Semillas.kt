@@ -2,7 +2,7 @@ package ar.edu.unahur.obj2.semillas
 
 //1) y 4)
 abstract class Planta(var altura: Double, val anioSemilla: Int) {
-    open fun esFuerte(): Boolean { return false }
+    open fun esFuerte(): Boolean { return horasDeSolToleradas() > 9 }
 
     open fun horasDeSolToleradas(): Int { return 7 }
 
