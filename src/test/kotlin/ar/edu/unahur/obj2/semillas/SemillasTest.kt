@@ -68,7 +68,7 @@ class SemillasTest : DescribeSpec ({
             parcela1.cantidadMaxima().shouldBe(4)
         }
 
-        it("Complicaciones") {
+        it("tiene Complicaciones este se da si alguna de sus plantas tolera menos sol del que recibe la parcela") {
             parcela1.tieneComplicaciones().shouldBeFalse()
         }
 
@@ -89,11 +89,11 @@ class SemillasTest : DescribeSpec ({
         INTA.agregarParcela(parcela2)
         INTA.agregarParcela(parcela3)
 
-        it("Promedio") {
+        it("Promedio este se calcula como la suma de plantas que hay en cada parcela dividido por la cantidad de parcelas que existen") {
             INTA.promedioDePlantas().shouldBe(3)
         }
 
-        it("Parcela más autosustentable") {
+        it("Parcela más autosustentable es la que tiene mas de 4 plantas y la que tenga mayor porcentaje de plantas bien asociadas") {
             INTA.parcelaMasAutosustentable().shouldBe(parcela2)
         }
     }
